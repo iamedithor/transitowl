@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimalist Online Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Video Background Section -->
+  <div class="video-container">
+    <video autoplay muted loop id="background-video">
+      <source src="video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay">
+      <h1>Welcome to Our Store</h1>
+    </div>
+  </div>
+
+  <!-- Header and Navigation -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Cart (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Promo Pop-up -->
+  <div id="promo-popup" class="promo-popup">
+    <div class="promo-content">
+      <p>Get 20% off your first order! Use code: WELCOME20</p>
+      <button id="close-promo" class="close-promo">Close</button>
+    </div>
+  </div>
+
+  <!-- Cart Pop-up -->
+  <div id="cart-popup" class="cart-popup">
+    <p>Item added to cart!</p>
+  </div>
+
+  <!-- Product Gallery Section -->
+  <section class="product-grid">
+    <div class="product">
+      <img src="product1.jpg" alt="Product 1" class="product-image">
+      <h2>Product 1</h2>
+      <p>$19.99</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="product2.jpg" alt="Product 2" class="product-image">
+      <h2>Product 2</h2>
+      <p>$29.99</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+
+    <!-- Add more products here -->
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about-us" class="about-us">
+    <h2>About Us</h2>
+    <p>We are a minimalist store focused on providing high-quality products to our customers. Our mission is to make shopping simple and elegant.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form id="contact-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer with Social Media Links -->
+  <footer>
+    <p>Follow us on social media!</p>
+    <ul class="social-media">
+      <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+      <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+      <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+    </ul>
+    <p>© 2024 Minimalist Store</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+/* Video Background Styling */
+.video-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-overlay h1 {
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+}
+
+/* Basic Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #E0E0E0;
+  color: #333;
+}
+
+/* Navigation */
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 1rem;
+  background-color: #FFD700;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Promo Pop-up */
+.promo-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.promo-popup.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.promo-content {
+  background-color: white;
+  padding: 2rem;
+  text-align: center;
+  color: #333;
+  border-radius: 10px;
+}
+
+.close-promo {
+  margin-top: 1rem;
+  background-color: #FFD700;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+}
+
+/* Cart Pop-up */
+.cart-popup {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #FFD700;
+  padding: 1rem 2rem;
+  color: #333;
+  border-radius: 5px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.cart-popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product {
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 1px solid #E0E0E0;
+}
+
+.product img {
+  max-width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.product:hover img {
+  transform: scale(1.1);
+}
+
+.add-to-cart {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+}
+
+.add-to-cart:hover {
+  background-color: #FFD700;
+  color: #333;
+}
+
+/* About Us Section */
+.about-us {
+  padding: 2rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.about-us h2 {
+  color: #333;
+}
+
+.about-us p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Contact Section */
+.contact {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact input, .contact textarea {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.contact button:hover {
+  background-color: #FFD700;
+  color: #333;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+footer .social-media {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+footer .social-media li {
+  margin: 0 1rem;
+}
+
+footer .social-media li a {
+  text-decoration: none;
+  color: white;
+}
+
+footer .social-media li a:hover {
+  color: #FFD700;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cartCountElement = document.getElementById('cart-count');
+  const cartPopup = document.getElementById('cart-popup');
+  const promoPopup = document.getElementById('promo-popup');
+  const closePromoButton = document.getElementById('close-promo');
+  let cartCount = 0;
+
+  // Show promo pop-up after 2 seconds
+  setTimeout(() => {
+    promoPopup.classList.add('active');
+  }, 2000);
+
+  // Close promo pop-up
+  closePromoButton.addEventListener('click', () => {
+    promoPopup.classList.remove('active');
+  });
+
+  // Add to cart functionality with pop-up
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      cartCount++;
+      cartCountElement.textContent = cartCount;
+
+      // Show cart pop-up
+      cartPopup.classList.add('show');
+      
+      // Hide the pop-up after 2 seconds
+      setTimeout(() => {
+        cartPopup.classList.remove('show');
+      }, 2000);
+    });
+  });
+});
